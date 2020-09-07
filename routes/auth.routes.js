@@ -1,12 +1,12 @@
 const {Router} = require('express')
 const bcrypt = require('bcryptjs')
+const config = require('config')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
 const router = Router()
 
-
-// /api/auth/registet
+// /api/auth/register
 router.post(
     '/register',
     [
@@ -44,7 +44,7 @@ router.post(
         }
     })
 
-// /api/auth/logib
+// /api/auth/login
 router.post(
     '/login',
     [
@@ -89,4 +89,4 @@ router.post(
         }
     })
 
-module.expotrs = router
+module.exports = router
