@@ -77,7 +77,7 @@ export const AuthPage = () => {
                             Log In
                         </button>
                         <button
-                            className="btn gray lighten-1 black-text"
+                            className="btn grey lighten-3 black-text"
                             onClick={registerHandler}
                             disabled={loading}
                         >
