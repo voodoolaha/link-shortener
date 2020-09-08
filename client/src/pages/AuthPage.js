@@ -1,13 +1,20 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useHttp} from "../hooks/http.hook";
+import {useMessage} from "../hooks/message.hook";
 
 export const AuthPage = () => {
-    const {loading, error, request} = useHttp()
+    const message = useMessage()
+    const {loading, error, request, clearError} = useHttp()
 
     const [form, setForm] = useState({
         email: '',
         password: ''
     })
+
+    useEffect(() => {
+        message(error)
+        clearError()
+    }, [error, message, clearError])
 
     const changeHandler = e => {
         setForm({...form, [e.target.name]: e.target.value})
@@ -16,6 +23,14 @@ export const AuthPage = () => {
     const registerHandler = async () => {
         try{
             const data = await request('/api/auth/register', 'POST', {...form})
+            message(data.message)
+        } catch (e) {}
+    }
+
+    const loginHandler = async () => {
+        try{
+            const data = await request('/api/auth/login', 'POST', {...form})
+            message(data.message)
         } catch (e) {}
     }
 
@@ -52,8 +67,19 @@ export const AuthPage = () => {
                         </div>
                     </div>
                     <div className="card-action">
-                        <button className="btn yellow darken-4">Log In</button>
-                        <button className="btn gray lighten-1 black-text">Register</button>
+                        <button
+                            className="btn yellow darken-4"
+                            onClick={loginHandler}
+                        >
+                            Log In
+                        </button>
+                        <button
+                            className="btn gray lighten-1 black-text"
+                            onClick={registerHandler}
+                            disabled={loading}
+                        >
+                            Register
+                        </button>
                     </div>
                 </div>
             </div>

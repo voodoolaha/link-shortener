@@ -4,8 +4,8 @@
   "description": "Mern stack",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "server": "nodemon app",
+    "start": "node app.js",
+    "server": "nodemon app.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -16,16 +16,14 @@
   ],
   "author": "Sviatoslav Vodolaha <sviatoslav.vodolaha@gmail.com>",
   "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^5.3.0",
-    "nodemon": "^2.0.4"
-  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^5.3.0",
     "config": "^3.3.1",
     "express": "^4.17.1",
     "express-validator": "^6.6.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.3"
+    "mongoose": "^5.10.3",
+    "nodemon": "^2.0.4"
   }
 }
