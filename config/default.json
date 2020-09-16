@@ -2,5 +2,5 @@
   "port": 7000,
   "jwtSecret": "dont get close",
   "mongoUri": "mongodb+srv://sviatoslav:Sidney030498@cluster0.ovuc1.mongodb.net/mern?retryWrites=true&w=majority",
-  "baseUrl": "http://localhost:5000"
+  "baseUrl": "http://localhost:7000"
 }
