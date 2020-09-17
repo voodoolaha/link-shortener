@@ -15,7 +15,7 @@ router.post('/generate', auth, async (req, res) => {
         const exists = await Link.findOne({ from })
 
         if (exists) {
-           return req.json({link: exists})
+           return res.json({link: exists})
         }
 
         const to = baseUrl + '/t/' + code
@@ -27,7 +27,6 @@ router.post('/generate', auth, async (req, res) => {
         await link.save()
 
         res.status(201).json({link})
-
     } catch (e) {
         res.status(500).json({message: 'Something went wrong, please try again'})
     }
@@ -44,7 +43,7 @@ router.get('/', auth, async (req, res) => {
 
 router.get('/:id', auth, async (req, res) => {
     try {
-        const link = await Link.findById(req.params.id) //eba
+        const link = await Link.findById(req.params.id)
         res.json(link)
     } catch (e) {
         res.status(500).json({message: 'Something went wrong, please try again'})

@@ -15,7 +15,7 @@ export const useRoutes = (isAuthenticated) => {
                 <Route path="/create" exact>
                     <CreatePage/>
                 </Route>
-                <Route path="/detail" exact>
+                <Route path="/detail/:id" exact>
                     <DetailPage/>
                 </Route>
                 <Redirect to="/create"/>
